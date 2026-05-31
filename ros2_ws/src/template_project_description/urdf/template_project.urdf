@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<robot name="template_project">
+  <link name="base_link"/>
+</robot>
+

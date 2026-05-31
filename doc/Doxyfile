@@ -1,0 +1,10 @@
+PROJECT_NAME           = "ROS2 C++/CUDA Template"
+OUTPUT_DIRECTORY       = build_docs
+HTML_OUTPUT            = html
+XML_OUTPUT             = xml
+INPUT                  = README.md doc ros2_ws/src/template_project_core/include
+RECURSIVE              = YES
+GENERATE_HTML          = YES
+GENERATE_XML           = YES
+QUIET                  = YES
+EXCLUDE_PATTERNS       = */build/* */install/* */log/*

@@ -1,0 +1,29 @@
+name: Build ROS2 Workspace
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-test:
+    runs-on: ubuntu-24.04
+    container:
+      image: ros:jazzy
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends build-essential catch2 cmake python3-colcon-common-extensions python3-pytest ros-dev-tools
+          rosdep update
+          rosdep install --from-paths ros2_ws/src -i -r -y --rosdistro jazzy
+      - name: Build and test
+        shell: bash
+        run: ./build_ros2_ws.sh --clean
+      - name: Static template checks
+        run: python3 -m pytest -q tests/template_checks
+

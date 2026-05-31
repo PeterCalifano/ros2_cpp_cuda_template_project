@@ -1,0 +1,23 @@
+name: Build Containers
+
+on:
+  pull_request:
+    paths:
+      - docker/**
+      - .devcontainer/**
+      - ros2_ws/src/**
+      - build_ros2_ws.sh
+  workflow_dispatch:
+
+jobs:
+  docker:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Build development image
+        run: docker build -f docker/Dockerfile --target dev -t template-project-dev .
+      - name: Build runtime image
+        run: docker build -f docker/Dockerfile --target runtime -t template-project-runtime .
+

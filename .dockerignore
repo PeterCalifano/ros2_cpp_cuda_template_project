@@ -1,0 +1,13 @@
+.git
+ros2_ws/build
+ros2_ws/install
+ros2_ws/log
+build_docs
+**/__pycache__
+**/.pytest_cache
+**/.mypy_cache
+**/compile_commands.json
+*.pyc
+*.profraw
+*.profdata
+*.log

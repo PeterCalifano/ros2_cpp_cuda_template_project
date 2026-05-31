@@ -1,0 +1,9 @@
+cmake_minimum_required(VERSION 3.16)
+project(template_project_core_consumer LANGUAGES CXX)
+
+find_package(template_project_core REQUIRED)
+
+add_executable(template_project_core_consumer example_project.cpp)
+target_link_libraries(template_project_core_consumer PRIVATE template_project_core::template_project_core)
+target_compile_features(template_project_core_consumer PRIVATE cxx_std_20)
+

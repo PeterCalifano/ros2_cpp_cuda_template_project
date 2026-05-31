@@ -1,0 +1,29 @@
+{
+  "name": "ROS2 C++ CUDA Template",
+  "build": {
+    "dockerfile": "../docker/Dockerfile",
+    "context": "..",
+    "target": "dev",
+    "args": {
+      "ROS_DISTRO": "jazzy"
+    }
+  },
+  "workspaceFolder": "/workspace",
+  "runArgs": [
+    "--network=host"
+  ],
+  "containerEnv": {
+    "ROS_DOMAIN_ID": "42"
+  },
+  "postCreateCommand": "./build_ros2_ws.sh --skip-tests",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "ms-iot.vscode-ros"
+      ]
+    }
+  }
+}
+

@@ -1,0 +1,35 @@
+name: Build documentation
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - README.md
+      - doc/**
+      - ros2_ws/src/**
+  pull_request:
+    paths:
+      - README.md
+      - doc/**
+      - ros2_ws/src/**
+  workflow_dispatch:
+    inputs:
+      deploy_pages:
+        description: "Deploy GitHub Pages"
+        type: boolean
+        default: false
+
+jobs:
+  docs:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Install docs dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz
+      - name: Generate docs
+        run: doxygen doc/Doxyfile
+
