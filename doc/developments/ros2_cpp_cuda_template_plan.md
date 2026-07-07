@@ -2,7 +2,7 @@
 
 ## Summary
 
-This repository is intended to become a GitHub template for generic C++/CUDA projects that must also build, install, test, and run as native ROS2 packages. It should merge the disciplined CMake/CUDA/library infrastructure from `cpp_cuda_template_project` with the high-level ROS2 workspace architecture visible in `hyper_2`: interfaces, reusable core logic, lifecycle/composable nodes, bringup assets, containerized workflows, and deployment entrypoints.
+This repository is intended to become a GitHub template for generic C++/CUDA projects that must also build, install, test, and run as native ROS2 packages. It should merge the disciplined CMake/CUDA/library infrastructure from `cpp_cuda_template_project` with the high-level ROS2 workspace architecture visible in `hyper_2`: interfaces, reusable core logic, lifecycle/composable nodes, spinup assets, containerized workflows, and deployment entrypoints.
 
 The template is not a `hyper_2` clone. `hyper_2` is only the architecture reference for a real multi-package ROS2 workspace. Robot-specific code, private dependencies, fixed hardware assumptions, and hardcoded workspace paths are excluded.
 
@@ -22,7 +22,7 @@ The sibling testfield repository must be created early and kept equivalent in sp
 - [ ] Create `ros2_ws/src/template_project_core` as the pure C++/CUDA package.
 - [ ] Create `ros2_ws/src/template_project_interfaces` for placeholder `msg`, `srv`, and optional `action` definitions.
 - [ ] Create `ros2_ws/src/template_project_nodes` for ROS2 lifecycle and composable node wrappers around the core library.
-- [ ] Create `ros2_ws/src/template_project_bringup` for launch files, YAML configs, RViz config, runtime scripts, and installed share assets.
+- [ ] Create `ros2_ws/src/template_project_spinup` for launch files, YAML configs, RViz config, runtime scripts, and installed share assets.
 - [ ] Create `ros2_ws/src/template_project_description` as an optional placeholder for URDF/mesh assets.
 - [ ] Add `ros2_ws/src/template_project_visualization` only if the initial scaffold has a generic visualization example that is worth maintaining.
 - [ ] Keep root-level `doc/`, `.github/`, `.devcontainer/`, `docker/`, `profiling/`, and helper scripts outside `ros2_ws` so they apply to the workspace template as a whole.
@@ -46,7 +46,7 @@ The sibling testfield repository must be created early and kept equivalent in sp
 - [ ] Add `ros2_ws/src/template_project_interfaces/package.xml` and one placeholder message/service pair.
 - [ ] Add `ros2_ws/src/template_project_nodes/package.xml` and a lifecycle node that wraps `CTemplateAlgorithm`.
 - [ ] Add one standalone node executable and one composable node registration.
-- [ ] Add `ros2_ws/src/template_project_bringup/package.xml`, one launch file, and one YAML config.
+- [ ] Add `ros2_ws/src/template_project_spinup/package.xml`, one launch file, and one YAML config.
 - [ ] Add `build_ros2_ws.sh` with the smallest useful interface: clean, build type, package selection, tests on/off, and extra CMake args.
 - [ ] Test immediately with `colcon build --symlink-install` from `ros2_ws`.
 - [ ] Test immediately with `colcon test` and `colcon test-result --verbose`.
@@ -56,7 +56,7 @@ The sibling testfield repository must be created early and kept equivalent in sp
 - [ ] Create `/home/peterc/devDir/dev-tools/ros2_cpp_cuda_template_testfield` as soon as Stage 1 builds.
 - [ ] Initialize it from the template by copying the current scaffold, not by manually writing a separate project.
 - [ ] Rename placeholders to a concrete project name, for example `ros2_template_testfield`.
-- [ ] Rename packages consistently, for example `ros2_template_testfield_core`, `ros2_template_testfield_interfaces`, `ros2_template_testfield_nodes`, and `ros2_template_testfield_bringup`.
+- [ ] Rename packages consistently, for example `ros2_template_testfield_core`, `ros2_template_testfield_interfaces`, `ros2_template_testfield_nodes`, and `ros2_template_testfield_spinup`.
 - [ ] Remove or adapt template-only files exactly as a downstream user would.
 - [ ] Build the testfield with `colcon build --symlink-install`.
 - [ ] Run `colcon test` and `colcon test-result --verbose` in the testfield.
@@ -219,6 +219,6 @@ The sibling testfield repository must be created early and kept equivalent in sp
 - [ ] Start with the smallest working ROS2 workspace before porting advanced CMake features.
 - [ ] Create the testfield immediately after the minimal workspace builds and tests.
 - [ ] Add each major feature to the template and then validate it in the testfield before moving to the next feature group.
-- [ ] Keep source-of-truth ownership clear: core algorithm code belongs in `template_project_core`; ROS graph behavior belongs in `template_project_nodes`; launch/config/deployment belongs in `template_project_bringup` or `docker`.
+- [ ] Keep source-of-truth ownership clear: core algorithm code belongs in `template_project_core`; ROS graph behavior belongs in `template_project_nodes`; launch/config/deployment belongs in `template_project_spinup` or `docker`.
 - [ ] Prefer direct, package-local CMake over global workspace state.
 - [ ] Keep the template generic enough for non-robot ROS2 applications.

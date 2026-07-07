@@ -6,7 +6,7 @@ import os
 
 
 def generate_launch_description():
-    package_share = get_package_share_directory("template_project_bringup")
+    package_share = get_package_share_directory("template_project_spinup")
     params_file = os.path.join(package_share, "config", "template_project.yaml")
 
     return LaunchDescription([

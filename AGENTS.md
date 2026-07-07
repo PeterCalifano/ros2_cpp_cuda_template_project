@@ -3,7 +3,7 @@
 Write to `CONTEXT.md` before compaction to prevent data loss.
 After auto-compaction, read `AGENTS.md` and `CONTEXT.md` before restarting.
 
-This repository is a ROS2-native C++/CUDA template. Keep the core C++ library independent of ROS2 unless a task explicitly asks to change that boundary. ROS2 graph behavior belongs in node packages; launch/config/runtime behavior belongs in bringup or container files.
+This repository is a ROS2-native C++/CUDA template. Keep the core C++ library independent of ROS2 unless a task explicitly asks to change that boundary. ROS2 graph behavior belongs in node packages; launch/config/runtime behavior belongs in spinup or container files.
 
 For C++/CUDA:
 - Use C++20 by default and keep CUDA optional.

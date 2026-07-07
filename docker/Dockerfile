@@ -46,4 +46,4 @@ COPY --from=builder /workspace/ros2_ws/install ./install
 COPY docker/runtime_entrypoint.sh /runtime_entrypoint.sh
 RUN chmod +x /runtime_entrypoint.sh
 ENTRYPOINT ["/runtime_entrypoint.sh"]
-CMD ["ros2", "launch", "template_project_bringup", "template_project.launch.py"]
+CMD ["ros2", "launch", "template_project_spinup", "template_project.launch.py"]

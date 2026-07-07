@@ -2,7 +2,7 @@
 
 A GitHub-template-ready ROS2 workspace for generic C++/CUDA projects that need both a reusable core library and native ROS2 package build/install/run workflows.
 
-The template combines the C++/CUDA engineering discipline of `cpp_cuda_template_project` with the high-level ROS2 workspace shape used by real multi-package projects such as `hyper_2`: interfaces, core library, lifecycle/composable nodes, bringup, containers, profiling, and testfield validation.
+The template combines the C++/CUDA engineering discipline of `cpp_cuda_template_project` with the high-level ROS2 workspace shape used by real multi-package projects such as `hyper_2`: interfaces, core library, lifecycle/composable nodes, spinup, containers, profiling, and testfield validation.
 
 ## Why This Exists
 
@@ -19,7 +19,7 @@ Generic ROS2 container templates solve environment setup, but they usually do no
 | Source | Strength | Gap for this use case | Imported or adapted here |
 | --- | --- | --- | --- |
 | `cpp_cuda_template_project` | Generic C++/CUDA library template with CMake modules, CUDA/OptiX switches, profiling, docs, CI, wrapper direction, and testfield validation. | It is CMake-first, not a native ROS2 workspace, and does not provide `package.xml`, `ament_cmake`, `colcon`, ROS2 interfaces, lifecycle nodes, launch files, or ROS deployment containers. | Core-library package, exported CMake target, CUDA/profiling/sanitizer/compiler modules, docs/CI/container patterns, static template checks, and testfield workflow. |
-| `hyper_2` | Real ROS2-native multi-package architecture with interfaces, reusable core behavior, nodes, launch/config, and containerized development. | It is domain-specific and includes project logic, private assumptions, and fixed package names that should not be copied into a generic template. | High-level package split, ROS wrapper boundary, lifecycle/composable node pattern, bringup layout, and container-first workflow. |
+| `hyper_2` | Real ROS2-native multi-package architecture with interfaces, reusable core behavior, nodes, launch/config, and containerized development. | It is domain-specific and includes project logic, private assumptions, and fixed package names that should not be copied into a generic template. | High-level package split, ROS wrapper boundary, lifecycle/composable node pattern, spinup layout, and container-first workflow. |
 | `ros2 pkg create` | Minimal official ROS2 package bootstrap. | Too small for repeated C++/CUDA library projects with profiling, docs, CI, exported core targets, and runtime containers. | Kept as the baseline ROS2 package convention, then expanded into a reusable project template. |
 
 ## Package Layout
@@ -29,7 +29,7 @@ ros2_ws/src/
   template_project_core/         Pure C++/CUDA library, no rclcpp dependency by default
   template_project_interfaces/   Placeholder messages and services
   template_project_nodes/        Lifecycle/composable ROS2 wrappers around the core
-  template_project_bringup/      Launch files, YAML configs, runtime assets
+  template_project_spinup/      Launch files, YAML configs, runtime assets
   template_project_description/  Optional URDF/mesh placeholder package
 ```
 
@@ -49,7 +49,7 @@ tests/template_checks/           Static template checks
 ```bash
 ./build_ros2_ws.sh --clean
 source ros2_ws/install/setup.bash
-ros2 launch template_project_bringup template_project.launch.py
+ros2 launch template_project_spinup template_project.launch.py
 ```
 
 Build only the core package:

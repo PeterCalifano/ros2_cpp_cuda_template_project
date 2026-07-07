@@ -104,9 +104,9 @@ for item_ in "${removals[@]}"; do
   rm -rf "${ROOT_DIR}/${item_}"
 done
 
-if [[ "$keep_description" == false && -f "${ROOT_DIR}/ros2_ws/src/template_project_bringup/package.xml" ]]; then
+if [[ "$keep_description" == false && -f "${ROOT_DIR}/ros2_ws/src/template_project_spinup/package.xml" ]]; then
   perl -0pi -e 's/\n  <exec_depend>template_project_description<\/exec_depend>//' \
-    "${ROOT_DIR}/ros2_ws/src/template_project_bringup/package.xml"
+    "${ROOT_DIR}/ros2_ws/src/template_project_spinup/package.xml"
 fi
 
 echo "ROS2 template cleanup complete."
