@@ -91,10 +91,9 @@ def test_spinup_package_replaces_bringup_runtime_references() -> None:
         assert "template_project_bringup" not in text_, relative_path_
         assert "bringup" not in text_.lower(), relative_path_
 
-def test_bringup_installs_default_rviz_workspace() -> None:
-    cmake_ = ReadText("ros2_ws/src/template_project_bringup/CMakeLists.txt")
-    rviz_config_ = ReadText("ros2_ws/src/template_project_bringup/rviz/template_project.rviz")
+def test_spinup_installs_default_rviz_workspace() -> None:
+    cmake_ = ReadText("ros2_ws/src/template_project_spinup/CMakeLists.txt")
+    rviz_config_ = ReadText("ros2_ws/src/template_project_spinup/rviz/template_project.rviz")
     assert "DIRECTORY launch config rviz" in cmake_
     assert "Visualization Manager:" in rviz_config_
     assert "Displays: []" in rviz_config_
-

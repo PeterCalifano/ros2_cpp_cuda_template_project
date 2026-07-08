@@ -8,7 +8,7 @@ option(TEMPLATE_PROJECT_PROFILE_CORE "Accepted for workspace-wide build helper c
 find_package(ament_cmake REQUIRED)
 
 install(
-  DIRECTORY launch config
+  DIRECTORY launch config rviz
   DESTINATION share/${PROJECT_NAME}
 )
 

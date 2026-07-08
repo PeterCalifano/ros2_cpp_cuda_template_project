@@ -110,8 +110,8 @@ done
 
 setup_file="/opt/ros/${ROS_DISTRO_DEFAULT}/setup.bash"
 if [[ -f "$setup_file" ]]; then
-  # shellcheck disable=SC1090
   set +u
+  # shellcheck source=/dev/null
   source "$setup_file"
   set -u
 else
